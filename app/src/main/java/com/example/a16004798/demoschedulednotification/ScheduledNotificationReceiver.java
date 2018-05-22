@@ -9,14 +9,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 public class ScheduledNotificationReceiver extends BroadcastReceiver {
 
     int reqCode = 12345;
 
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        Log.d("ScheduledNotification","sakfhwigh");
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -33,7 +36,7 @@ public class ScheduledNotificationReceiver extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,"default");
         builder.setContentTitle("Amazing Offer!");
         builder.setContentText("Subject");
-        builder.setSmallIcon(android.R.drawable.btn_star_big_off);
+        builder.setSmallIcon(android.R.drawable.ic_dialog_info);
         builder.setContentIntent(pIntent);
         builder.setAutoCancel(true);
 

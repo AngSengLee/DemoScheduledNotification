@@ -33,12 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 //Create a new PendingIntent and add it to the AlarmManager
                 Intent intent = new Intent(MainActivity.this, ScheduledNotificationReceiver.class);
 
-                PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, reqCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, reqCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-                AlarmManager am;
-
-                //Get AlarmManager instance
-                am = (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
+                AlarmManager am = (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
 
                 //Set the alarm
                 am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
